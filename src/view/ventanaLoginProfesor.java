@@ -129,7 +129,7 @@ public class ventanaLoginProfesor extends javax.swing.JFrame {
 
         mysql.validarLogueo(profe);
 
-        this.dispose();
+        //this.dispose();
     }// GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegresarActionPerformed

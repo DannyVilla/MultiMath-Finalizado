@@ -10,6 +10,7 @@ public class Respuesta {
     public boolean isCorrect;
     public boolean Selected;
     public String Value;
+    public int Resultado;
 
     public Respuesta(String Text, String Value, boolean isCorrect, boolean Selected) {
         this.Text = Text;
@@ -19,6 +20,18 @@ public class Respuesta {
         this.Selected = Selected;
 
     }
+
+    public Respuesta() {
+    }
+
+    public int getResultado() {
+        return Resultado;
+    }
+
+    public void setResultado(int Resultado) {
+        this.Resultado = Resultado;
+    }
+    
 
     public String getText() {
         return Text;

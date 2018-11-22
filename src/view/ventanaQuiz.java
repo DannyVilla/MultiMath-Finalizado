@@ -1,66 +1,46 @@
 package view;
 
-import java.util.ArrayList;
+
+import java.util.List;
 import models.Pregunta;
+import models.Respuesta;
 
 public class ventanaQuiz extends javax.swing.JFrame {
     //Variables necesarias
-    public static ArrayList<Pregunta> preguntas;
+    public List<Pregunta> preguntas;
     Pregunta pregunta = null;
     int posicion = 0;
     
-    /**
-     * Creates new form ventanaEjercicios
-     */
-    public ventanaQuiz() {
+    
+    public ventanaQuiz(List<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("¿Quien quiere ser millonario");
-        
-        
-        /*
-        btnTerminarExamen.setEnabled(false);
-        
-        if(DatosQuiz.preguntas.size() > 0){
-            setPreguntasRespuestas();
-            
-            btnRegresar.setEnabled(false);
-            
-            if(DatosQuiz.preguntas.size() == 1){
-                btnTerminarExamen.setEnabled(true);
-            }else{
-                btnTerminarExamen.setEnabled(false);
-            }
-        }else{
-            btnTerminarExamen.setEnabled(false);
-            btnRegresar.setEnabled(false);
-            btnAvanzar.setEnabled(false);
-        }
-        */
+        this.setTitle("Preguntas");
+        btnAvanzar.setVisible(true);
+        cargarPreguntas();
+        //cargarPreguntasSN();
     }
      
-    /*
-    private void setPreguntasRespuestas(){
-        btnGrupoRespuesta.clearSelection();
-        
-        Pregunta pregunta = DatosQuiz.preguntas.get(posicion);
-        
-        lblPreguntaMostrada.setText(pregunta.Text);
-        
-        rbtnOpcionRespuesta1.setText(pregunta.respuestas.get(0).Text);
-        rbtnOpcionRespuesta1.setSelected(pregunta.respuestas.get(0).Selected);
-        rbtnOpcionRespuesta1.requestFocus();
-        
-        rbtnOpcionRespuesta2.setText(pregunta.respuestas.get(1).Text);
-        rbtnOpcionRespuesta2.setSelected(pregunta.respuestas.get(1).Selected);
-
-        rbtnOpcionRespuesta3.setText(pregunta.respuestas.get(2).Text);
-        rbtnOpcionRespuesta3.setSelected(pregunta.respuestas.get(2).Selected);
-
-        rbtnOpcionRespuesta4.setText(pregunta.respuestas.get(3).Text);
-        rbtnOpcionRespuesta4.setSelected(pregunta.respuestas.get(3).Selected);
+    private void cargarPreguntas(){
+        pregunta = preguntas.get(posicion);
+        lblPreguntaMostrada.setText(pregunta.getText());
+        for(Respuesta respuesta: pregunta.respuestas){
+            lblRespuesta.setText(String.valueOf(respuesta.getResultado()));
+        }
+        btnRegresar.setVisible(false);
     }
-        */
+    
+    /*private void cargarPreguntasSN(){
+        pregunta = preguntas.get(posicion);
+        lblPreguntaMostrada.setText(pregunta.getText());
+        for(Respuesta respuestaSN : pregunta.respuestas){
+            lblRespuesta.setText(String.valueOf(respuestaSN.getResultado()));
+        }
+        btnRegresar.setVisible(false);
+    }*/
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,6 +56,8 @@ public class ventanaQuiz extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         btnAvanzar = new javax.swing.JButton();
         btnTerminarExamen = new javax.swing.JButton();
+        btnSalirQuiz = new javax.swing.JButton();
+        lblRespuesta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,33 +86,51 @@ public class ventanaQuiz extends javax.swing.JFrame {
         });
 
         btnAvanzar.setText("Avanzar>>");
+        btnAvanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvanzarActionPerformed(evt);
+            }
+        });
 
         btnTerminarExamen.setText("Terminar Examen");
+
+        btnSalirQuiz.setText("<<Volver");
+        btnSalirQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirQuizActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 548, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnRegresar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAvanzar)
-                        .addGap(64, 64, 64))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalirQuiz)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTerminarExamen)
-                        .addGap(96, 96, 96))))
+                        .addGap(153, 153, 153))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAvanzar)
+                        .addGap(77, 77, 77))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rbtnOpcionRespuesta4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnOpcionRespuesta1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnOpcionRespuesta2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnOpcionRespuesta3, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnOpcionRespuesta4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbtnOpcionRespuesta1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rbtnOpcionRespuesta3)
+                            .addComponent(rbtnOpcionRespuesta2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(lblPreguntaMostrada))
@@ -140,7 +140,7 @@ public class ventanaQuiz extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(lblNombreFrame)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(752, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,23 +149,31 @@ public class ventanaQuiz extends javax.swing.JFrame {
                 .addComponent(lblNombreFrame)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblIndicacionesEjercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(lblPreguntaMostrada)
                 .addGap(54, 54, 54)
-                .addComponent(rbtnOpcionRespuesta1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rbtnOpcionRespuesta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(rbtnOpcionRespuesta2)
                 .addGap(18, 18, 18)
                 .addComponent(rbtnOpcionRespuesta3)
                 .addGap(18, 18, 18)
                 .addComponent(rbtnOpcionRespuesta4)
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegresar)
-                    .addComponent(btnAvanzar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTerminarExamen)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegresar)
+                            .addComponent(btnAvanzar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTerminarExamen)
+                        .addContainerGap(58, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalirQuiz)
+                        .addContainerGap())))
         );
 
         pack();
@@ -175,52 +183,34 @@ public class ventanaQuiz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaQuiz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void btnSalirQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirQuizActionPerformed
+        //Volver al menu anterior
+        ventanaNivelesEjercicio vNivelEjercicio = new ventanaNivelesEjercicio();
+        vNivelEjercicio.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnSalirQuizActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaQuiz().setVisible(true);
-            }
-        });
-    }
+    private void btnAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarActionPerformed
+        // TODO add your handling code here:
+        if (posicion < preguntas.size() -1) {
+            posicion++;
+            cargarPreguntas();
+        }else{
+            btnAvanzar.setVisible(false);
+        } 
+    }//GEN-LAST:event_btnAvanzarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvanzar;
     private javax.swing.ButtonGroup btnGrupoRespuesta;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnSalirQuiz;
     private javax.swing.JButton btnTerminarExamen;
     private javax.swing.JLabel lblIndicacionesEjercicio;
     private javax.swing.JLabel lblNombreFrame;
     private javax.swing.JLabel lblPreguntaMostrada;
+    private javax.swing.JLabel lblRespuesta;
     private javax.swing.JRadioButton rbtnOpcionRespuesta1;
     private javax.swing.JRadioButton rbtnOpcionRespuesta2;
     private javax.swing.JRadioButton rbtnOpcionRespuesta3;

@@ -9,6 +9,7 @@ import conexion.Conexion;
 import controller.DatosQuiz;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 import models.Pregunta;
 
 /**
@@ -16,7 +17,8 @@ import models.Pregunta;
  * @author sam
  */
 public class ventanaNivelesEjercicio extends javax.swing.JFrame {
-        
+        DatosQuiz datos = new DatosQuiz();
+        List<Pregunta> preguntas=datos.validarPreguntasPrimerNivel();
     /**
      * Creates new form ventanaNivelesEjercicio
      */
@@ -158,17 +160,18 @@ public class ventanaNivelesEjercicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAccederNivel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederNivel1ActionPerformed
-        ventanaQuiz vQuiz = new ventanaQuiz();
+        
+        ventanaQuiz vQuiz = new ventanaQuiz(preguntas);
         vQuiz.setVisible(true);
         this.dispose();
         
-        DatosQuiz datos = new DatosQuiz();
-        datos.validarPreguntasPrimerNivel();
+        
+        
         
     }//GEN-LAST:event_btnAccederNivel1ActionPerformed
 
     private void btnAccederNivel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederNivel2ActionPerformed
-        ventanaQuiz vQuiz = new ventanaQuiz();
+        ventanaQuiz vQuiz = new ventanaQuiz(preguntas);
         vQuiz.setVisible(true);
         this.dispose();
         
@@ -177,7 +180,7 @@ public class ventanaNivelesEjercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccederNivel2ActionPerformed
 
     private void btnAccederNivel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederNivel3ActionPerformed
-        ventanaQuiz vQuiz = new ventanaQuiz();
+        ventanaQuiz vQuiz = new ventanaQuiz(preguntas);
         vQuiz.setVisible(true);
         this.dispose();
         
