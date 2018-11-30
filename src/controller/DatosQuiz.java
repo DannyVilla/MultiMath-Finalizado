@@ -16,29 +16,42 @@ import models.Respuesta;
 
 public class DatosQuiz {
 
-    public List<Pregunta> validarPreguntasPrimerNivel() {
+    public List<Pregunta> getPreguntas(int Nivel) {
         //TODO: Obtener las 10 primeras preguntas
         Conexion conexion = new Conexion();
         Connection connection = conexion.obtenerConexion();
         List<Pregunta> listaPreguntas = new ArrayList<Pregunta>();
-        
+
         try {
-            PreparedStatement preparedstatement = connection.prepareStatement(" SELECT * FROM ejercicios WHERE nivel =  1 ");
+            PreparedStatement preparedstatement = connection.prepareStatement(" SELECT * FROM ejercicios WHERE nivel =  ? ");
+            preparedstatement.setInt(1, Nivel);
             ResultSet rs = preparedstatement.executeQuery();
 
             while (rs.next()) {
-                ArrayList<Respuesta> respuesta = new ArrayList<Respuesta>();
-                Respuesta baseRespuesta = new Respuesta();
+
                 Pregunta pregunta = new Pregunta();
-                
+
                 pregunta.setId(rs.getInt("numEjercicio"));
                 pregunta.setLevel(rs.getInt("nivel"));
                 pregunta.setText(rs.getString("descripcion"));
-                baseRespuesta.setResultado(rs.getInt("resultado"));
-                
-                respuesta.add(baseRespuesta);
-                pregunta.setRespuestas(respuesta);
+
+                PreparedStatement preparedstatement2 = connection.prepareStatement(" SELECT * FROM respuestas WHERE numEjercicio =  ? ");
+                preparedstatement2.setInt(1, pregunta.getId());
+                ResultSet rs2 = preparedstatement2.executeQuery();
+
+                ArrayList<Respuesta> respuestas = new ArrayList<>();
+                while (rs2.next()) {
+                    Respuesta respuesta = new Respuesta();
+                    respuesta.setIsCorrect(rs2.getBoolean("isCorrecta")); ;
+                    respuesta.setText(rs2.getString("valor"));
+                    respuesta.setSelected(false);
+                    respuestas.add(respuesta);
+                }
+                pregunta.respuestas = respuestas;
                 listaPreguntas.add(pregunta);
+                for(Pregunta preguntas : listaPreguntas){
+                    System.out.println(pregunta.respuestas);
+                }
             }
         } catch (Exception e) {
             System.out.println("Algo paso y yo no se que fue" + e.getMessage());
@@ -46,60 +59,4 @@ public class DatosQuiz {
         return listaPreguntas;
     }
 
-    public List<Pregunta> validarPreguntasSegundoNivel() {
-        //TODO: Obtener las 10 primeras preguntas
-        Conexion conexion = new Conexion();
-        Connection connection = conexion.obtenerConexion();
-        List<Pregunta> listaPreguntasSN = new ArrayList<Pregunta>();
-
-        try {
-            PreparedStatement preparedstatement = connection.prepareStatement(" SELECT * FROM ejercicios WHERE nivel =  2 ");
-            ResultSet rs = preparedstatement.executeQuery();
-
-            while (rs.next()) {
-                ArrayList<Respuesta> respuestaSN = new ArrayList<Respuesta>();
-                Respuesta baseRespuesta = new Respuesta();
-                Pregunta pregunta = new Pregunta();
-                
-                pregunta.setId(rs.getInt("numEjercicio"));
-                pregunta.setLevel(rs.getInt("nivel"));
-                pregunta.setText(rs.getString("descripcion"));
-                baseRespuesta.setResultado(rs.getInt("resultado"));
-                respuestaSN.add(baseRespuesta);
-                pregunta.setRespuestas(respuestaSN);
-                listaPreguntasSN.add(pregunta);
-            }
-        } catch (Exception e) {
-            System.out.println("Algo paso y no se que ocurrio" + e.getMessage());
-        }
-        return listaPreguntasSN;
-    }
-
-    public List<Pregunta> validarPreguntasTercerNivel() {
-        //TODO: Obtener las 10 primeras preguntas
-        Conexion conexion = new Conexion();
-        Connection connection = conexion.obtenerConexion();
-        List<Pregunta> listaPreguntasTercerNivel = new ArrayList<Pregunta>();
-
-        try {
-            PreparedStatement preparedstatement = connection.prepareStatement(" SELECT * FROM ejercicios WHERE nivel =  3 ");
-            ResultSet rs = preparedstatement.executeQuery();
-
-            while (rs.next()) {
-                ArrayList<Respuesta> respuestaTercerNivel = new ArrayList<Respuesta>();
-                Respuesta baseRespuesta = new Respuesta();
-                Pregunta pregunta = new Pregunta();
-                pregunta.setId(rs.getInt("numEjercicio"));
-                pregunta.setLevel(rs.getInt("nivel"));
-                pregunta.setText(rs.getString("descripcion"));
-                baseRespuesta.setResultado(rs.getInt("resultado"));
-                respuestaTercerNivel.add(baseRespuesta);
-                pregunta.setRespuestas(respuestaTercerNivel);
-                listaPreguntasTercerNivel.add(pregunta);
-            }
-        } catch (Exception e) {
-            System.out.println("Algo paso y no se que ocurrio" + e.getMessage());
-        }
-        return listaPreguntasTercerNivel;
-    }
 }

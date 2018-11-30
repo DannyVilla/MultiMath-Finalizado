@@ -19,6 +19,7 @@ public class ventaInicio extends javax.swing.JFrame {
     public ventaInicio() {
         initComponents();
         this.setLocationRelativeTo(this);
+        
     }
 
     /**
@@ -28,54 +29,50 @@ public class ventaInicio extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         btnAlumno = new javax.swing.JButton();
         btnProfesor = new javax.swing.JButton();
         lblDescripcion = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAlumno.setBackground(new java.awt.Color(255, 102, 0));
+        btnAlumno.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
+        btnAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogAlumno.png"))); // NOI18N
         btnAlumno.setText("Alumno");
         btnAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 250, 100));
 
+        btnProfesor.setBackground(new java.awt.Color(0, 0, 102));
+        btnProfesor.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
+        btnProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogProfesor.png"))); // NOI18N
         btnProfesor.setText("Profesor");
         btnProfesor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfesorActionPerformed(evt);
             }
         });
+        getContentPane().add(btnProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 250, 100));
 
+        lblDescripcion.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
+        lblDescripcion.setForeground(new java.awt.Color(0, 0, 51));
         lblDescripcion.setText("Por favor selecciona como ingresar al sistema");
+        getContentPane().add(lblDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup().addGap(189, 189, 189)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(btnProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 135,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(btnAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 135,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup().addGap(136, 136, 136)
-                                        .addComponent(lblDescripcion)))
-                        .addContainerGap(143, Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-                javax.swing.GroupLayout.Alignment.TRAILING,
-                layout.createSequentialGroup().addContainerGap(58, Short.MAX_VALUE).addComponent(lblDescripcion)
-                        .addGap(55, 55, 55)
-                        .addComponent(btnProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 53,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87).addComponent(btnAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 53,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MultiMath.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, -1, 150));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Global.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,6 +136,8 @@ public class ventaInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlumno;
     private javax.swing.JButton btnProfesor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblDescripcion;
     // End of variables declaration//GEN-END:variables
 }

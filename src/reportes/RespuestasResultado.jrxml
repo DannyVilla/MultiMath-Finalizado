@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RespuestasResultado" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68d1a574-fc39-441d-80ef-b8764b30eb74">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     ejercicios.`descripcion` AS ejercicios_descripcion,
+     ejercicios.`resultado` AS ejercicios_resultado,
+     ejercicios.`nivel` AS ejercicios_nivel
+FROM
+     `ejercicios` ejercicios]]>
+	</queryString>
+	<field name="ejercicios_descripcion" class="java.lang.String"/>
+	<field name="ejercicios_resultado" class="java.lang.String"/>
+	<field name="ejercicios_nivel" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="305" y="0" width="182" height="41" uuid="ef1b8ca0-2b0e-405d-88e5-00ce88e60ec4"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Guia Ejercicios]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="684" y="0" width="100" height="20" uuid="1d52c9b6-96d9-40bd-bb6c-e1d920eac513"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="bf8cc562-f3f0-4420-9ea4-49344f65fe56"/>
+				<text><![CDATA[Ejercicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="730" y="2" width="72" height="20" uuid="ca8de0ee-1738-4ce4-b5a5-f20d5ad1f26f"/>
+				<text><![CDATA[Nivel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="635" y="2" width="73" height="20" uuid="61c8c24b-7868-4bf8-885c-c81cd42461ed"/>
+				<text><![CDATA[Respuesta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="613" height="20" uuid="2d7feb68-c495-40b9-a6ee-d880af21574a"/>
+				<textFieldExpression><![CDATA[$F{ejercicios_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="646" y="0" width="62" height="20" uuid="86d9aa53-d6ec-4da1-a44f-044242dd1e35"/>
+				<textFieldExpression><![CDATA[$F{ejercicios_resultado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="730" y="0" width="72" height="20" uuid="a8a16bcb-8c98-4d43-a323-f363848c37b5"/>
+				<textFieldExpression><![CDATA[$F{ejercicios_nivel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="332" y="0" width="80" height="20" uuid="1ba863e9-88a5-4f16-a444-6a32e04a3ca3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="412" y="0" width="40" height="20" uuid="6045bcc3-a933-4014-a707-958526260eac"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

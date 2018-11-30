@@ -5,23 +5,17 @@
  */
 package view;
 
-import conexion.Conexion;
-import controller.DatosQuiz;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.List;
-import models.Pregunta;
+
 
 /**
  *
  * @author sam
  */
 public class ventanaNivelesEjercicio extends javax.swing.JFrame {
-        DatosQuiz datos = new DatosQuiz();
-        List<Pregunta> preguntas=datos.validarPreguntasPrimerNivel();
-    /**
-     * Creates new form ventanaNivelesEjercicio
-     */
+    
+
+     
+   //Constructor
     public ventanaNivelesEjercicio() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -46,147 +40,107 @@ public class ventanaNivelesEjercicio extends javax.swing.JFrame {
         btnAccederNivel2 = new javax.swing.JButton();
         btnAccederNivel3 = new javax.swing.JButton();
         btnRegresarOpcionesAlumno = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Por favor selecciona el nivel para comenzar");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nivel 1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Nivel 2");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Nivel 3");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
 
-        jLabel5.setText("Faciles y sencillas");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Preguntas Sencillas");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, 31));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Intermedio Avanzado");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Con cuidado, campeón");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, -1));
 
+        btnAccederNivel1.setBackground(new java.awt.Color(102, 255, 102));
+        btnAccederNivel1.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
+        btnAccederNivel1.setForeground(new java.awt.Color(0, 0, 51));
         btnAccederNivel1.setText("Acceder");
         btnAccederNivel1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAccederNivel1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAccederNivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 130, 60));
 
+        btnAccederNivel2.setBackground(new java.awt.Color(153, 153, 255));
+        btnAccederNivel2.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
+        btnAccederNivel2.setForeground(new java.awt.Color(0, 0, 51));
         btnAccederNivel2.setText("Acceder");
         btnAccederNivel2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAccederNivel2ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAccederNivel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 130, 60));
 
+        btnAccederNivel3.setBackground(new java.awt.Color(255, 153, 102));
+        btnAccederNivel3.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
+        btnAccederNivel3.setForeground(new java.awt.Color(0, 0, 51));
         btnAccederNivel3.setText("Acceder");
         btnAccederNivel3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAccederNivel3ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAccederNivel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 130, 60));
 
-        btnRegresarOpcionesAlumno.setText("<<Regresar");
+        btnRegresarOpcionesAlumno.setBackground(new java.awt.Color(102, 255, 255));
+        btnRegresarOpcionesAlumno.setFont(new java.awt.Font("Roboto Lt", 1, 18)); // NOI18N
+        btnRegresarOpcionesAlumno.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarOpcionesAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Reg.png"))); // NOI18N
+        btnRegresarOpcionesAlumno.setText("Regresar");
         btnRegresarOpcionesAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarOpcionesAlumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegresarOpcionesAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 160, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(156, 156, 156)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(53, 53, 53)))
-                .addGap(57, 57, 57))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(230, 230, 230))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAccederNivel1)
-                        .addGap(169, 169, 169)
-                        .addComponent(btnAccederNivel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                        .addComponent(btnAccederNivel3)
-                        .addGap(88, 88, 88))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnRegresarOpcionesAlumno)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAccederNivel1)
-                    .addComponent(btnAccederNivel2)
-                    .addComponent(btnAccederNivel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addComponent(btnRegresarOpcionesAlumno)
-                .addGap(42, 42, 42))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Global.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAccederNivel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederNivel1ActionPerformed
-        
-        ventanaQuiz vQuiz = new ventanaQuiz(preguntas);
+
+        ventanaQuiz vQuiz = new ventanaQuiz(1);
         vQuiz.setVisible(true);
         this.dispose();
-        
-        
-        
-        
     }//GEN-LAST:event_btnAccederNivel1ActionPerformed
 
     private void btnAccederNivel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederNivel2ActionPerformed
-        ventanaQuiz vQuiz = new ventanaQuiz(preguntas);
+        ventanaQuiz vQuiz = new ventanaQuiz(2);
         vQuiz.setVisible(true);
         this.dispose();
-        
-        DatosQuiz datos = new DatosQuiz();
-        datos.validarPreguntasSegundoNivel();
     }//GEN-LAST:event_btnAccederNivel2ActionPerformed
 
     private void btnAccederNivel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederNivel3ActionPerformed
-        ventanaQuiz vQuiz = new ventanaQuiz(preguntas);
+        ventanaQuiz vQuiz = new ventanaQuiz(3);
         vQuiz.setVisible(true);
         this.dispose();
-        
-        DatosQuiz datos = new DatosQuiz();
-        datos.validarPreguntasTercerNivel();
-        
     }//GEN-LAST:event_btnAccederNivel3ActionPerformed
 
     private void btnRegresarOpcionesAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarOpcionesAlumnoActionPerformed
@@ -194,41 +148,6 @@ public class ventanaNivelesEjercicio extends javax.swing.JFrame {
        vOAlumno.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btnRegresarOpcionesAlumnoActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaNivelesEjercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaNivelesEjercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaNivelesEjercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaNivelesEjercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ventanaNivelesEjercicio().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccederNivel1;
@@ -242,7 +161,6 @@ public class ventanaNivelesEjercicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
-
-    
 }

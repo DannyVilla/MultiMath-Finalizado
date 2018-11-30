@@ -5,14 +5,9 @@
  */
 package view;
 
-import com.mysql.cj.protocol.Resultset;
 import conexion.Conexion;
 import controller.metodoSQL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 import models.Profesor;
 
@@ -38,7 +33,7 @@ public class ventanaLoginProfesor extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -48,74 +43,51 @@ public class ventanaLoginProfesor extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnProbarConexion = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Por favor registrate con tu usuario y clave");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, -10, -1, 43));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 184, -1));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 184, -1));
 
+        btnIngresar.setBackground(new java.awt.Color(255, 102, 51));
+        btnIngresar.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 142, 60));
 
+        btnRegresar.setBackground(new java.awt.Color(255, 102, 102));
+        btnRegresar.setFont(new java.awt.Font("Roboto Lt", 1, 24)); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 145, 60));
 
+        jLabel2.setFont(new java.awt.Font("Roboto Lt", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogProfesor.png"))); // NOI18N
         jLabel2.setText("Usuario");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 150, -1));
 
+        jLabel3.setFont(new java.awt.Font("Roboto Lt", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Contraseña.png"))); // NOI18N
         jLabel3.setText("Clave");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
-        btnProbarConexion.setText("Probar Conexion");
-        btnProbarConexion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProbarConexionActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-                .createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup().addGap(188, 188, 188)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtUsuario).addComponent(txtPassword,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup().addGap(177, 177, 177).addGroup(layout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel1)
-                                .addGroup(layout.createSequentialGroup().addGap(13, 13, 13)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel3).addComponent(btnIngresar,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 87,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18).addComponent(btnRegresar))))
-                        .addGroup(layout.createSequentialGroup().addGap(242, 242, 242).addComponent(jLabel2,
-                                javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup().addGap(220, 220, 220).addComponent(btnProbarConexion)))
-                .addContainerGap(182, Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addGap(32, 32, 32).addComponent(jLabel1).addGap(87, 87, 87)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel2)
-                        .addGap(52, 52, 52)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel3)
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 44,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 44,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18).addComponent(btnProbarConexion).addContainerGap(24, Short.MAX_VALUE)));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Login Profesor.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,11 +175,11 @@ public class ventanaLoginProfesor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnProbarConexion;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private static javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

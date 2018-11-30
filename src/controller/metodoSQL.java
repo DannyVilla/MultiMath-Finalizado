@@ -7,7 +7,7 @@ import models.Alumno;
 import models.Profesor;
 import view.Variables;
 import view.ventanaOpcionesAlumno;
-import view.ventanaOpcionesProfesor;
+import view.vOpcionesProfesor;
 
 /**
  *
@@ -46,9 +46,11 @@ public class metodoSQL {
 
             if (resultset.next()) {
                 Variables.idProfesor = resultset.getInt("id");
-
-                ventanaOpcionesProfesor voProfesor = new ventanaOpcionesProfesor();
-                voProfesor.setVisible(true);
+                
+                vOpcionesProfesor vProfesor = new vOpcionesProfesor();
+                vProfesor.setVisible(true);
+                //ventanaOpcionesProfesor voProfesor = new ventanaOpcionesProfesor();
+                //voProfesor.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Error, vuelve a intentarlo");

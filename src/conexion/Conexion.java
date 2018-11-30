@@ -7,10 +7,6 @@ package conexion;
 
 import java.sql.*;
 
-/**
- *
- * @author sam
- */
 public class Conexion {
     Connection conectar = null;
 
@@ -22,7 +18,7 @@ public class Conexion {
             System.out.println("");
 
             conectar = DriverManager.getConnection("jdbc:mysql://localhost/matematicas?"
-                    + "useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user=root&password=Csgo1997");
+                    + "useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user=root&password=root");
             System.out.println("Conectado");
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
